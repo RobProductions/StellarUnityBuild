@@ -19,6 +19,7 @@ If you start with Stellar Unity Build, however, you can be assured that I will f
 ## Enhancements Over SuperUnityBuild
 
 - **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
+- **Generate Build Constants button:** A new button appears on a selected build which allows you to create the BuildConstants.cs file for a specific environment without adjusting your Platform or Editor BuildScenes. This is useful if you want your editor settings to remain unchanged but need to rely on compiled constants for scripts to work correctly.
 
 ## Installation
 
