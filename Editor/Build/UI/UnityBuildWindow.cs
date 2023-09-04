@@ -17,7 +17,7 @@ namespace SuperUnityBuild.BuildTool
 
         #region MenuItems
 
-        [MenuItem("Window/SuperUnityBuild")]
+        [MenuItem("Window/Build Pipeline/Stellar Unity Build")]
         public static void ShowWindow()
         {
             // Get Inspector type, so we can try to autodock beside it.
@@ -44,8 +44,8 @@ namespace SuperUnityBuild.BuildTool
 
         protected void OnEnable()
         {
-            GUIContent icon = EditorGUIUtility.IconContent("Packages/com.github.superunitybuild.buildtool/Editor/Assets/Textures/icon.png");
-            GUIContent title = new GUIContent("SuperUnityBuild", icon.image);
+            GUIContent icon = EditorGUIUtility.IconContent("Packages/com.robproductions.stellarunitybuild/Editor/Assets/Textures/StellarIcon.png");
+            GUIContent title = new GUIContent("Stellar Unity Build", icon.image);
             titleContent = title;
 
             BuildNotificationList.instance.InitializeErrors();
@@ -137,7 +137,7 @@ namespace SuperUnityBuild.BuildTool
         private void DrawTitle()
         {
             EditorGUILayout.BeginVertical(EditorStyles.inspectorFullWidthMargins);
-            EditorGUILayout.LabelField("SuperUnityBuild", UnityBuildGUIUtility.mainTitleStyle);
+            EditorGUILayout.LabelField("Stellar Unity Build", UnityBuildGUIUtility.mainTitleStyle);
             GUILayout.Space(30);
             EditorGUILayout.EndVertical();
         }
