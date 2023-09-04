@@ -28,9 +28,9 @@ I recommend that you use the Package Manager within Unity or OpenUPM to install 
 
 ## License
 
-Like the original SuperUnityBuild project, Stellar Unity Build uses the MIT License. Feel free to build your own ideas off of this project so long as you follow 
+Like the original SuperUnityBuild project, Stellar Unity Build uses the MIT License. Feel free to build your own ideas off of this project so long as you follow the agreements laid out in the license file. 
 
-Original description to follow:
+*Original description to follow:*
 
 # SuperUnityBuild
 
