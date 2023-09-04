@@ -41,6 +41,7 @@ namespace SuperUnityBuild.BuildTool
             string currentVersion = "",
             BuildReleaseType currentReleaseType = null,
             BuildPlatform currentBuildPlatform = null,
+            BuildScriptingBackend currentScriptingBackend = null,
             BuildArchitecture currentBuildArchitecture = null,
             BuildDistribution currentBuildDistribution = null)
         {
@@ -60,6 +61,7 @@ namespace SuperUnityBuild.BuildTool
             string versionString = currentVersion;
             string releaseTypeString = currentReleaseType == null ? NONE : SanitizeString(currentReleaseType.typeName);
             string platformString = currentBuildPlatform == null ? NONE : SanitizeString(currentBuildPlatform.platformName);
+            string backendString = currentScriptingBackend == null ? NONE : SanitizeString(currentScriptingBackend.name);
             string archString = currentBuildArchitecture == null ? NONE : SanitizeString(currentBuildArchitecture.name);
             string distributionString = currentBuildDistribution == null ? NONE : SanitizeString(currentBuildDistribution.distributionName);
 
@@ -136,6 +138,35 @@ namespace SuperUnityBuild.BuildTool
                 if (!enumBuffer.Contains(platformString))
                     platformString = NONE;
 
+                // Write Backend enum.
+                enumBuffer.Clear();
+                writer.WriteLine("    public enum ScriptingBackend");
+                writer.WriteLine("    {");
+                writer.WriteLine("        {0},", NONE);
+                enumBuffer.Add(NONE);
+                foreach (BuildPlatform platform in BuildSettings.platformList.platforms)
+                {
+                    if (platform.enabled)
+                    {
+                        foreach (BuildScriptingBackend backend in platform.scriptingBackends)
+                        {
+                            string addedString = SanitizeString(backend.name);
+
+                            if (backend.enabled && !enumBuffer.Contains(addedString))
+                            {
+                                enumBuffer.Add(addedString);
+                                writer.WriteLine("        {0},", addedString);
+                            }
+                        }
+                    }
+                }
+                writer.WriteLine("    }");
+                writer.WriteLine();
+
+                // Validate Backend string.
+                if (!enumBuffer.Contains(backendString))
+                    backendString = NONE;
+
                 // Write Architecture enum.
                 enumBuffer.Clear();
                 writer.WriteLine("    public enum Architecture");
@@ -199,6 +230,7 @@ namespace SuperUnityBuild.BuildTool
                 writer.WriteLine("    public const string version = \"{0}\";", versionString);
                 writer.WriteLine("    public const ReleaseType releaseType = ReleaseType.{0};", releaseTypeString);
                 writer.WriteLine("    public const Platform platform = Platform.{0};", platformString);
+                writer.WriteLine("    public const ScriptingBackend backend = ScriptingBackend.{0};", backendString);
                 writer.WriteLine("    public const Architecture architecture = Architecture.{0};", archString);
                 writer.WriteLine("    public const Distribution distribution = Distribution.{0};", distributionString);
 
