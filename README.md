@@ -1,3 +1,37 @@
+# Stellar Unity Build
+
+*Stellar Unity Build* is a fork of the powerful automation tool [SuperUnityBuild](https://github.com/superunitybuild/buildtool), which aims to streamline the automation of your builds in Unity. This extension package provides new experimental features that offer more control over your build pipeline.
+
+## Goals
+
+While I don't wish to understate the work done by the original SuperUnityBuild authors, I have far too many ideas for improvements that would be too much for the original project if I bombarded them with Pull Requests. In an attempt to keep the stability and sanity intact for SuperUnityBuild, I've opted to push my ideas into this new extension package instead.
+
+In *Stellar Unity Build*, you are free to make more wild suggestions and drastic changes that wouldn't risk upsetting the standard that many people know from the original project. I might be making frequent adjustments here, but I will also try to pull in fixes and updates from SuperUnityBuild when possible to stay current. 
+
+That said, full credit for the original idea and implementation goes to the SuperUnityBuild developers, which you can find [here](https://github.com/superunitybuild/buildtool/graphs/contributors).
+
+## Compatibility
+
+I will try my best to maintain compatibility with the SuperUnityBuild file structures and Actions, but it's likely that too many things will change in the future to promise full backwards support. From my experiments, it seems that you might have to recreate some data which could be formatted differently within your settings file should things stray too far, for example re-inputting your desired scene list. 
+
+If you start with Stellar Unity Build, however, you can be assured that I will follow the SemVer standard and only make breaking changes on Major version updates. Stellar Unity Build will start at 1.0.0 and update at a different rate than SuperUnityBuild. 
+
+## Enhancements Over SuperUnityBuild
+
+- **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
+
+## Installation
+
+I recommend that you use the Package Manager within Unity or OpenUPM to install this package. For the Git URL, input this:
+
+[https://github.com/RobProductions/StellarUnityBuild.git](https://github.com/RobProductions/StellarUnityBuild.git)
+
+## License
+
+Like the original SuperUnityBuild project, Stellar Unity Build uses the MIT License. Feel free to build your own ideas off of this project so long as you follow 
+
+Original description to follow:
+
 # SuperUnityBuild
 
 [![openupm](https://img.shields.io/npm/v/com.github.superunitybuild.buildtool?label=openupm&registry_uri=https://package.openupm.com)][openupm-package]
