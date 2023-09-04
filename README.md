@@ -1,6 +1,6 @@
 # Stellar Unity Build
 
-*Stellar Unity Build* is a fork of the powerful automation tool [SuperUnityBuild](https://github.com/superunitybuild/buildtool), which aims to streamline the automation of your builds in Unity. This extension package provides new experimental features that offer more control over your build pipeline.
+*Stellar Unity Build* is a fork of the powerful automation tool [SuperUnityBuild](https://github.com/superunitybuild/buildtool), which aims to streamline the build process in Unity. This extension package provides new experimental features that offer more control over your build pipeline.
 
 ## Goals
 
