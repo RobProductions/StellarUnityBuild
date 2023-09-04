@@ -20,7 +20,7 @@ namespace SuperUnityBuild.BuildTool
 
             EditorGUILayout.BeginHorizontal();
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader(label.text, ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader(label.text, ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             UnityBuildGUIUtility.HelpButton("Parameter-Details#prepost-build-actions");
@@ -72,7 +72,7 @@ namespace SuperUnityBuild.BuildTool
 
                 buildAction.actionEnabled = EditorGUILayout.Toggle(buildAction.actionEnabled, GUILayout.Width(15));
                 EditorGUI.BeginDisabledGroup(!buildAction.actionEnabled);
-                UnityBuildGUIUtility.DropdownHeader(new GUIContent(text, tooltip), ref show, false, GUILayout.ExpandWidth(true));
+                UnityBuildGUIUtility.DropdownHeader(new GUIContent(text, tooltip), ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
                 EditorGUI.EndDisabledGroup();
                 listEntry.isExpanded = show;
 

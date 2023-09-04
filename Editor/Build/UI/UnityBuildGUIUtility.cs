@@ -25,6 +25,12 @@ namespace SuperUnityBuild.BuildTool
 
         #endregion
 
+        public enum HeaderColorType
+        {
+            DefaultColor = 0,
+            AltColor = 1,
+            NoColor = 2,
+        }
         private GUIStyle _dropdownHeaderStyle;
         private GUIStyle _dropdownContentStyle;
         private GUIStyle _helpButtonStyle;
@@ -38,7 +44,8 @@ namespace SuperUnityBuild.BuildTool
         private GUIStyle _sceneActiveToggleStyle;
 
         private Color32 _defaultBackgroundColor = GUI.backgroundColor;
-        private Color32 _mainHeaderColor = new Color32(180, 180, 255, 255);
+        private Color32 _mainHeaderColor = new Color32(180, 200, 250, 255);
+        private Color32 _altHeaderColor = new Color32(200, 210, 230, 255);
         private Color32 _buildButtonColor = new Color32(102, 230, 102, 255);
 
         private GUIContent helpButtonContent;
@@ -114,21 +121,38 @@ namespace SuperUnityBuild.BuildTool
             return GUILayout.Button("X", instance._helpButtonStyle);
         }
 
-        public static void DropdownHeader(string content, ref bool showDropdown, bool noColor, params GUILayoutOption[] options)
+        public static void DropdownHeader(string content, ref bool showDropdown, HeaderColorType colorType, params GUILayoutOption[] options)
         {
-            DropdownHeader(new GUIContent { text = content }, ref showDropdown, noColor, options);
+            DropdownHeader(new GUIContent { text = content }, ref showDropdown, colorType, options);
         }
 
-        public static void DropdownHeader(GUIContent content, ref bool showDropdown, bool noColor, params GUILayoutOption[] options)
+        public static void DropdownHeader(GUIContent content, ref bool showDropdown, HeaderColorType colorType, params GUILayoutOption[] options)
         {
-            if (!noColor)
-                GUI.backgroundColor = instance._mainHeaderColor;
+            if (colorType != HeaderColorType.NoColor)
+            {
+                if(colorType == HeaderColorType.AltColor)
+                {
+                    GUI.backgroundColor = instance._altHeaderColor;
+                }
+                else
+                {
+                    GUI.backgroundColor = instance._mainHeaderColor;
+                }
+            }
 
-            if (EditorGUILayout.DropdownButton(new GUIContent(content), FocusType.Keyboard, dropdownHeaderStyle, options))
+            var newContent = new GUIContent(content);
+            string dropdownChar = showDropdown ? "↓" : "→";
+            newContent.text = dropdownChar + " " + newContent.text;
+
+            if (EditorGUILayout.DropdownButton(newContent, FocusType.Keyboard, dropdownHeaderStyle, options))
+            {
                 showDropdown = !showDropdown;
+            }
 
-            if (!noColor)
+            if (colorType != HeaderColorType.NoColor)
+            {
                 GUI.backgroundColor = instance._defaultBackgroundColor;
+            }
         }
 
         public static void HelpButton(string anchor = "")

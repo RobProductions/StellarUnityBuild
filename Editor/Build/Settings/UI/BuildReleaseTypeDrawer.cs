@@ -20,7 +20,7 @@ namespace SuperUnityBuild.BuildTool
 
             EditorGUILayout.BeginHorizontal();
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, false);
+            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, UnityBuildGUIUtility.HeaderColorType.AltColor);
             property.isExpanded = show;
 
             if (UnityBuildGUIUtility.DeleteButton())

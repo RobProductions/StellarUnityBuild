@@ -24,7 +24,7 @@ namespace SuperUnityBuild.BuildTool
             property.serializedObject.Update();
 
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Build Platforms", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Build Platforms", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             UnityBuildGUIUtility.HelpButton("Parameter-Details#build-platforms");
@@ -95,7 +95,7 @@ namespace SuperUnityBuild.BuildTool
                 string tooltip = platform.ToString();
                 string text = UnityBuildGUIUtility.ToLabel(tooltip);
 
-                UnityBuildGUIUtility.DropdownHeader(new GUIContent(text, tooltip), ref show, false, GUILayout.ExpandWidth(true));
+                UnityBuildGUIUtility.DropdownHeader(new GUIContent(text, tooltip), ref show, UnityBuildGUIUtility.HeaderColorType.AltColor, GUILayout.ExpandWidth(true));
 
                 listEntry.isExpanded = show;
 

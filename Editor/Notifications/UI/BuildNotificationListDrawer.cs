@@ -49,7 +49,7 @@ namespace SuperUnityBuild.BuildTool
             GUI.backgroundColor = Color.red;
             UnityBuildGUIUtility.DropdownHeader(
                 $"Errors ({errorCount})",
-                ref show, true,
+                ref show, UnityBuildGUIUtility.HeaderColorType.NoColor,
                 GUILayout.ExpandWidth(true));
 
             if (clearableCount > 0)
@@ -102,7 +102,7 @@ namespace SuperUnityBuild.BuildTool
             GUI.backgroundColor = Color.yellow;
             UnityBuildGUIUtility.DropdownHeader(
                 $"Warnings ({warningCount})",
-                ref show, true,
+                ref show, UnityBuildGUIUtility.HeaderColorType.NoColor,
                 GUILayout.ExpandWidth(true));
 
             if (clearableCount > 0)
@@ -155,7 +155,7 @@ namespace SuperUnityBuild.BuildTool
             GUI.backgroundColor = logHeaderColor;
             UnityBuildGUIUtility.DropdownHeader(
                 $"Log ({warningCount})",
-                ref show, true,
+                ref show, UnityBuildGUIUtility.HeaderColorType.NoColor,
                 GUILayout.ExpandWidth(true));
 
             if (clearableCount > 0)

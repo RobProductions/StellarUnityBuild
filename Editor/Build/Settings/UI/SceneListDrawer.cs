@@ -18,7 +18,7 @@ namespace SuperUnityBuild.BuildTool
             EditorGUILayout.BeginHorizontal();
 
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Scene List", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Scene List", ref show, UnityBuildGUIUtility.HeaderColorType.AltColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             EditorGUILayout.EndHorizontal();
@@ -71,52 +71,49 @@ namespace SuperUnityBuild.BuildTool
 
                 EditorGUILayout.BeginHorizontal();
 
-                show = list.isExpanded;
+                bool sceneListShow = true;
                 UnityBuildGUIUtility.DropdownHeader(string.Format("Scenes ({0}, Active: {1}) (First Scene: {2})", list.arraySize, activeCount, sceneName),
-                    ref show, false, GUILayout.ExpandWidth(true));
-                list.isExpanded = show;
+                    ref sceneListShow, UnityBuildGUIUtility.HeaderColorType.NoColor, GUILayout.ExpandWidth(true));
+                list.isExpanded = true;
 
                 EditorGUILayout.EndHorizontal();
 
-                if (show)
+                for (int i = 0; i < list.arraySize; i++)
                 {
-                    for (int i = 0; i < list.arraySize; i++)
+                    platformProperty = list.GetArrayElementAtIndex(i);
+                    fileGUID = platformProperty.FindPropertyRelative("fileGUID").stringValue;
+                    filePath = AssetDatabase.GUIDToAssetPath(fileGUID);
+                    sceneName = Path.GetFileNameWithoutExtension(filePath);
+                    sceneActiveProperty = platformProperty.FindPropertyRelative("sceneActive");
+
+                    //Top actions + name
+
+                    //Vertical padding
+                    EditorGUILayout.Space(4f);
+
+                    EditorGUILayout.BeginHorizontal();
+
+                    sceneActiveProperty.boolValue = UnityBuildGUIUtility.SceneActiveToggle(sceneActiveProperty.boolValue);
+                    UnityBuildGUIUtility.SceneNameLabel(sceneName);
+
+                    UnityBuildGUIUtility.ReorderArrayControls(list, i);
+
+                    if (UnityBuildGUIUtility.DeleteButton())
                     {
-                        platformProperty = list.GetArrayElementAtIndex(i);
-                        fileGUID = platformProperty.FindPropertyRelative("fileGUID").stringValue;
-                        filePath = AssetDatabase.GUIDToAssetPath(fileGUID);
-                        sceneName = Path.GetFileNameWithoutExtension(filePath);
-                        sceneActiveProperty = platformProperty.FindPropertyRelative("sceneActive");
-
-                        //Top actions + name
-
-                        //Vertical padding
-                        EditorGUILayout.Space(4f);
-
-                        EditorGUILayout.BeginHorizontal();
-
-                        sceneActiveProperty.boolValue = UnityBuildGUIUtility.SceneActiveToggle(sceneActiveProperty.boolValue);
-                        UnityBuildGUIUtility.SceneNameLabel(sceneName);
-
-                        UnityBuildGUIUtility.ReorderArrayControls(list, i);
-
-                        if (UnityBuildGUIUtility.DeleteButton())
-                        {
-                            list.SafeDeleteArrayElementAtIndex(i);
-                        }
-
-                        EditorGUILayout.EndHorizontal();
-
-                        //Bottom info label
-
-                        EditorGUILayout.BeginHorizontal();
-
-                        UnityBuildGUIUtility.SceneInfoLabel(filePath);
-
-                        EditorGUILayout.EndHorizontal();
-
-                        property.serializedObject.ApplyModifiedProperties();
+                        list.SafeDeleteArrayElementAtIndex(i);
                     }
+
+                    EditorGUILayout.EndHorizontal();
+
+                    //Bottom info label
+
+                    EditorGUILayout.BeginHorizontal();
+
+                    UnityBuildGUIUtility.SceneInfoLabel(filePath);
+
+                    EditorGUILayout.EndHorizontal();
+
+                    property.serializedObject.ApplyModifiedProperties();
                 }
 
                 GUILayout.Space(20);
