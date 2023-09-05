@@ -36,6 +36,19 @@ namespace SuperUnityBuild.BuildTool
             {
                 EditorGUILayout.BeginVertical(UnityBuildGUIUtility.dropdownContentStyle);
 
+                var syncSceneListProperty = property.FindPropertyRelative("syncSceneList");
+
+                EditorGUILayout.PropertyField(syncSceneListProperty);
+
+                EditorGUI.BeginDisabledGroup(syncSceneListProperty.boolValue);
+
+                if(syncSceneListProperty.boolValue)
+                {
+                    //We're syncing, so set the list to the build scenes
+                    list.ClearArray();
+                    GetSceneFilesFromBuildSettings();
+                }
+
                 SerializedProperty platformProperty;
                 string fileGUID;
                 string filePath;
@@ -167,6 +180,9 @@ namespace SuperUnityBuild.BuildTool
 
                 list.serializedObject.ApplyModifiedProperties();
                 property.serializedObject.ApplyModifiedProperties();
+
+
+                EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.EndVertical();
             }

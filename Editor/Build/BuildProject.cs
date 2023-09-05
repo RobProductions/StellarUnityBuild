@@ -277,11 +277,21 @@ namespace SuperUnityBuild.BuildTool
             PlayerSettings.SetScriptingDefineSymbolsForGroup(platform.targetGroup, buildDefines);
 
             // Set target settings
-            PlayerSettings.companyName = releaseType.companyName;
-            PlayerSettings.productName = releaseType.productName;
+            if(!releaseType.syncCompanyName)
+            {
+                PlayerSettings.companyName = releaseType.companyName;
+            }
+            if(!releaseType.syncProductName)
+            {
+                PlayerSettings.productName = releaseType.productName;
+            }
+           
 
             // Set bundle info
-            PlayerSettings.SetApplicationIdentifier(platform.targetGroup, releaseType.bundleIdentifier);
+            if(!releaseType.syncBundleIdentifier)
+            {
+                PlayerSettings.SetApplicationIdentifier(platform.targetGroup, releaseType.bundleIdentifier);
+            }
 
             // Apply build variant
             platform.ApplyVariant();
@@ -440,7 +450,7 @@ namespace SuperUnityBuild.BuildTool
             // Generate build path
             string buildPath = GenerateBuildPath(BuildSettings.basicSettings.buildPath, releaseType, platform, architecture, scriptingBackend, distribution, buildTime);
             string finalBuildName = releaseType.productName;
-            if(!releaseType.syncAppNameWithProduct)
+            if(!releaseType.syncAppBuildName)
             {
                 finalBuildName = releaseType.appBuildName;
             }

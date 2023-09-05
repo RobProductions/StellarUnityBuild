@@ -12,9 +12,13 @@ namespace SuperUnityBuild.BuildTool
         public string bundleIdentifier = string.Empty;
         public string companyName = string.Empty;
         public string productName = string.Empty;
-
-        public bool syncAppNameWithProduct = true;
         public string appBuildName = string.Empty;
+
+        public bool syncBundleIdentifier = true;
+        public bool syncCompanyName = true;
+        public bool syncProductName = true;
+        [FormerlySerializedAs("syncAppNameWithProduct")]
+        public bool syncAppBuildName = true;
 
         public BuildOptions buildOptions;
         public string customDefines = string.Empty;

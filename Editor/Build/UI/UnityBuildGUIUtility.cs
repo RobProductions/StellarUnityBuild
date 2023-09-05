@@ -155,6 +155,22 @@ namespace SuperUnityBuild.BuildTool
             }
         }
 
+        public static void PropertyWithSyncButton(SerializedProperty syncProperty,
+            SerializedProperty stringProperty, string syncString)
+        {
+            GUILayout.BeginHorizontal();
+            EditorGUI.BeginDisabledGroup(syncProperty.boolValue);
+            if (syncProperty.boolValue)
+            {
+                stringProperty.stringValue = syncString;
+            }
+            EditorGUILayout.PropertyField(stringProperty, GUILayout.ExpandWidth(true));
+            EditorGUI.EndDisabledGroup();
+            EditorGUILayout.PropertyField(syncProperty, new GUIContent(""), GUILayout.ExpandWidth(false), GUILayout.Width(20f));
+            GUILayout.EndHorizontal();
+
+        }
+
         public static void HelpButton(string anchor = "")
         {
             if (GUILayout.Button(_instance.helpButtonContent, helpButtonStyle))
