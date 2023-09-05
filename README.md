@@ -2,6 +2,14 @@
 
 *Stellar Unity Build* is a fork of the powerful automation tool [SuperUnityBuild](https://github.com/superunitybuild/buildtool), which aims to streamline the build process in Unity. This extension package provides new experimental features that offer more control over your build pipeline.
 
+## Enhancements Over SuperUnityBuild
+
+- **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
+- **Generate Build Constants button:** A new button appears on a selected build which allows you to create the BuildConstants.cs file for a specific environment without adjusting your Platform or Editor BuildScenes. This is useful if you want your editor settings to remain unchanged but need to rely on compiled constants for scripts to work correctly.
+- **Styling Improvements:** Header panels and dropdowns have been restyled for accessibility and clarity.
+- **Sync Release Settings Feature:** You can now individually sync Product Name, Company Name, and Bundle Identifier with your project settings so that all of your releases can be updated automatically when your Player settings change. You can override this by unchecking the sync toggle and inputting your own custom strings.
+- **Sync Release Scene List:** You can now sync the list of scenes to be included in a release with your EditorBuildScene list (File->Build Settings) so that your releases can be updated automatically when your build settings change.
+
 ## Goals
 
 While I don't wish to understate the work done by the original SuperUnityBuild authors, I have far too many ideas for improvements that would be too much for the original project if I bombarded them with Pull Requests. In an attempt to keep the stability and sanity intact for SuperUnityBuild, I've opted to push my ideas into this new extension package instead.
@@ -15,14 +23,6 @@ That said, full credit for the original idea and implementation goes to the Supe
 I will try my best to maintain compatibility with the SuperUnityBuild file structures and Actions, but it's likely that too many things will change in the future to promise full backwards support. From my experiments, it seems that you might have to recreate some data which could be formatted differently within your settings file should things stray too far, for example re-inputting your desired scene list. 
 
 If you start with Stellar Unity Build, however, you can be assured that I will follow the SemVer standard and only make breaking changes on Major version updates. Stellar Unity Build will start at 1.0.0 and update at a different rate than SuperUnityBuild. 
-
-## Enhancements Over SuperUnityBuild
-
-- **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
-- **Generate Build Constants button:** A new button appears on a selected build which allows you to create the BuildConstants.cs file for a specific environment without adjusting your Platform or Editor BuildScenes. This is useful if you want your editor settings to remain unchanged but need to rely on compiled constants for scripts to work correctly.
-- **Styling Improvements:** Header panels and dropdowns have been restyled for accessibility and clarity.
-- **Sync Release Settings Feature:** You can now individually sync Product Name, Company Name, and Bundle Identifier with your project settings so that all of your releases can be updated automatically when your Player settings change. You can override this by unchecking the sync toggle and inputting your own custom strings.
-- **Sync Release Scene List:** You can now sync the list of scenes to be included in a release with your EditorBuildScene list (File->Build Settings) so that your releases can be updated automatically when your build settings change.
 
 ## Installation
 
