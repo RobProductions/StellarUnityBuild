@@ -1,5 +1,5 @@
 {
-    "name": "SuperUnityBuild.BuildTool.Editor",
+    "name": "RobProductions.StellarUnityBuild.Editor",
     "rootNamespace": "SuperUnityBuild.BuildTool",
     "references": [],
     "includePlatforms": [
