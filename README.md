@@ -20,6 +20,9 @@ If you start with Stellar Unity Build, however, you can be assured that I will f
 
 - **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
 - **Generate Build Constants button:** A new button appears on a selected build which allows you to create the BuildConstants.cs file for a specific environment without adjusting your Platform or Editor BuildScenes. This is useful if you want your editor settings to remain unchanged but need to rely on compiled constants for scripts to work correctly.
+- **Styling Improvements:** Header panels and dropdowns have been restyled for accessibility and clarity.
+- **Sync Release Settings Feature:** You can now individually sync Product Name, Company Name, and Bundle Identifier with your project settings so that all of your releases can be updated automatically when your Player settings change. You can override this by unchecking the sync toggle and inputting your own custom strings.
+- **Sync Release Scene List:** You can now sync the list of scenes to be included in a release with your EditorBuildScene list (File->Build Settings) so that your releases can be updated automatically when your build settings change.
 
 ## Installation
 
