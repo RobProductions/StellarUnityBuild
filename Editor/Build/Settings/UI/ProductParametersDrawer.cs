@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ namespace SuperUnityBuild.BuildTool
             EditorGUILayout.BeginHorizontal();
 
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Product Parameters", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Product Parameters", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             UnityBuildGUIUtility.HelpButton("Parameter-Details#product-parameters");

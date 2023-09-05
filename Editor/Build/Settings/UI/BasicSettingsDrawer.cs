@@ -16,7 +16,7 @@ namespace SuperUnityBuild.BuildTool
             EditorGUILayout.BeginHorizontal();
 
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Basic Settings", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Basic Settings", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             UnityBuildGUIUtility.HelpButton("Parameter-Details#basic-settings");

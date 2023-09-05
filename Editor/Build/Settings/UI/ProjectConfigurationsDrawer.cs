@@ -29,7 +29,7 @@ namespace SuperUnityBuild.BuildTool
             EditorGUILayout.BeginHorizontal();
 
             show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Build Configurations", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Build Configurations", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
 
             UnityBuildGUIUtility.HelpButton("Parameter-Details#build-configurations");
@@ -43,7 +43,7 @@ namespace SuperUnityBuild.BuildTool
 
                 EditorGUILayout.BeginHorizontal();
                 show = showViewOptions.isExpanded;
-                UnityBuildGUIUtility.DropdownHeader("View Options", ref show, false, GUILayout.ExpandWidth(true));
+                UnityBuildGUIUtility.DropdownHeader("View Options", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
                 showViewOptions.isExpanded = show;
                 EditorGUILayout.EndHorizontal();
 
@@ -60,7 +60,7 @@ namespace SuperUnityBuild.BuildTool
                 GUILayout.Space(5);
                 EditorGUILayout.BeginHorizontal();
                 show = showConfigs.isExpanded;
-                UnityBuildGUIUtility.DropdownHeader("Configurations", ref show, false, GUILayout.ExpandWidth(true));
+                UnityBuildGUIUtility.DropdownHeader("Configurations", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
                 showConfigs.isExpanded = show;
                 EditorGUILayout.EndHorizontal();
 
@@ -89,7 +89,7 @@ namespace SuperUnityBuild.BuildTool
                 GUILayout.Space(5);
                 EditorGUILayout.BeginHorizontal();
                 show = showBuildInfo.isExpanded;
-                UnityBuildGUIUtility.DropdownHeader("Selected Build Info", ref show, false, GUILayout.ExpandWidth(true));
+                UnityBuildGUIUtility.DropdownHeader("Selected Build Info", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
                 showBuildInfo.isExpanded = show;
                 EditorGUILayout.EndHorizontal();
 

@@ -20,7 +20,7 @@ namespace SuperUnityBuild.BuildTool
 
             EditorGUILayout.BeginHorizontal();
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, false);
+            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, UnityBuildGUIUtility.HeaderColorType.AltColor);
             property.isExpanded = show;
 
             if (UnityBuildGUIUtility.DeleteButton())
@@ -44,8 +44,7 @@ namespace SuperUnityBuild.BuildTool
             {
                 EditorGUILayout.BeginVertical(UnityBuildGUIUtility.dropdownContentStyle);
 
-                GUILayout.Label("Basic Info", UnityBuildGUIUtility.midHeaderStyle);
-
+                GUILayout.Label("Basic Info", UnityBuildGUIUtility.midHeaderStyle, GUILayout.ExpandWidth(true));
                 SerializedProperty typeName = property.FindPropertyRelative("typeName");
 
                 EditorGUILayout.BeginHorizontal();
@@ -53,22 +52,31 @@ namespace SuperUnityBuild.BuildTool
                 typeName.stringValue = GUILayout.TextArea(typeName.stringValue.SanitizeFolderName());
                 EditorGUILayout.EndHorizontal();
 
-                var productNameProperty = property.FindPropertyRelative("productName");
-                EditorGUILayout.PropertyField(property.FindPropertyRelative("bundleIdentifier"));
-                EditorGUILayout.PropertyField(productNameProperty);
-                EditorGUILayout.PropertyField(property.FindPropertyRelative("companyName"));
-                var syncAppNameProperty = property.FindPropertyRelative("syncAppNameWithProduct");
-                var appBuildNameProperty = property.FindPropertyRelative("appBuildName");
-                EditorGUILayout.PropertyField(syncAppNameProperty, new GUIContent("Sync App Build Name"));
-                EditorGUI.BeginDisabledGroup(syncAppNameProperty.boolValue);
-                if(syncAppNameProperty.boolValue)
-                {
-                    appBuildNameProperty.stringValue = productNameProperty.stringValue;
-                }
-                EditorGUILayout.PropertyField(appBuildNameProperty);
-                EditorGUI.EndDisabledGroup();
+                GUILayout.Space(15);
 
-                GUILayout.Space(20);
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Label("Release Settings", UnityBuildGUIUtility.midHeaderStyle, GUILayout.ExpandWidth(true));
+                GUILayout.Label("Sync w/ Project", UnityBuildGUIUtility.midHeaderStyle, GUILayout.Width(120f));
+                EditorGUILayout.EndHorizontal();
+
+                var productNameProperty = property.FindPropertyRelative("productName");
+                var syncProductNameProperty = property.FindPropertyRelative("syncProductName");
+                UnityBuildGUIUtility.PropertyWithSyncButton(syncProductNameProperty, productNameProperty, Application.productName);
+
+                var companyProperty = property.FindPropertyRelative("companyName");
+                var syncCompanyProperty = property.FindPropertyRelative("syncCompanyName");
+                UnityBuildGUIUtility.PropertyWithSyncButton(syncCompanyProperty, companyProperty, Application.companyName);
+
+                var bundleProperty = property.FindPropertyRelative("bundleIdentifier");
+                var syncBundleProperty = property.FindPropertyRelative("syncBundleIdentifier");
+                UnityBuildGUIUtility.PropertyWithSyncButton(syncBundleProperty, bundleProperty, Application.identifier);
+
+                var syncAppNameProperty = property.FindPropertyRelative("syncAppBuildName");
+                var appBuildNameProperty = property.FindPropertyRelative("appBuildName");
+
+                UnityBuildGUIUtility.PropertyWithSyncButton(syncAppNameProperty, appBuildNameProperty, productNameProperty.stringValue);
+
+                GUILayout.Space(15);
                 GUILayout.Label("Build Options", UnityBuildGUIUtility.midHeaderStyle);
 
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("customDefines"));

@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace SuperUnityBuild.BuildTool
@@ -28,7 +28,7 @@ namespace SuperUnityBuild.BuildTool
 
             EditorGUILayout.BeginHorizontal();
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader("Filter", ref show, false, GUILayout.ExpandWidth(true));
+            UnityBuildGUIUtility.DropdownHeader("Filter", ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor, GUILayout.ExpandWidth(true));
             property.isExpanded = show;
             EditorGUILayout.EndHorizontal();
 

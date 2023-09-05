@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace SuperUnityBuild.BuildTool
             EditorGUI.BeginProperty(position, GUIContent.none, property);
 
             bool show = property.isExpanded;
-            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("platformName").stringValue, ref show, false);
+            UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("platformName").stringValue, ref show, UnityBuildGUIUtility.HeaderColorType.DefaultColor);
             property.isExpanded = show;
 
             if (show)

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace SuperUnityBuild.BuildTool
 {
@@ -10,12 +11,32 @@ namespace SuperUnityBuild.BuildTool
     {
         public List<Scene> releaseScenes = new List<Scene>();
 
+        [Tooltip("When enabled, the scene list for this release will match your Editor Build Settings scene list (File->Build Settings)")]
+        public bool syncSceneList = false;
+
         public SceneList()
         {
         }
 
         public void Refresh()
         {
+            //If we're syncing, make sure to set the scenes to the build settings list
+            if(syncSceneList)
+            {
+                releaseScenes.Clear();
+
+                EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+
+                for (int i = 0; i < scenes.Length; i++)
+                {
+                    var thisBuildScene = scenes[i];
+                    //Pass the enabled status from the build window
+                    var newScene = new Scene();
+                    newScene.fileGUID = AssetDatabase.AssetPathToGUID(thisBuildScene.path);
+                    newScene.sceneActive = thisBuildScene.enabled;
+                    releaseScenes.Add(newScene);
+                }
+            }
             // Verify that all scenes in list still exist.
             for (int i = 0; i < releaseScenes.Count; i++)
             {
