@@ -9,6 +9,8 @@
 - **Styling Improvements:** Header panels and dropdowns have been restyled for accessibility and clarity.
 - **Sync Release Settings Feature:** You can now individually sync Product Name, Company Name, and Bundle Identifier with your project settings so that all of your releases can be updated automatically when your Player settings change. You can override this by unchecking the sync toggle and inputting your own custom strings.
 - **Sync Release Scene List:** You can now sync the list of scenes to be included in a release with your EditorBuildScene list (File->Build Settings) so that your releases can be updated automatically when your build settings change.
+- **SuperUnityBuild.Generated namespace:** BuildConstants.cs is now encapsulated in a namespace to safeguard against user code that may utilize the same naming convention.
+- **Readonly field option for Build Constants:** Using the const keyword for BuildConstants is great for making sure the values are known at compile time, but it also introduces warnings about unreachable code if you were to actually utilize those fields in an if statement. There's now an option to disable const keyword and replace it with "static readonly" within the basic settings, and that will eliminate these warnings since the changing parameters are no longer compile-time constants.
 
 ## Goals
 
