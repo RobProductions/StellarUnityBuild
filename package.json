@@ -1,7 +1,7 @@
 {
   "name": "com.robproductions.stellarunitybuild",
   "displayName": "Stellar Unity Build",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "unity": "2020.3",
   "description": "Stellar Unity Build is a fork of the powerful automation tool SuperUnityBuild. This extension package adds several new features to provide better control of your automated build pipeline.",
   "changelogUrl": "CHANGELOG.md",
