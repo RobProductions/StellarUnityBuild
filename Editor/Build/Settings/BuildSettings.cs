@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SuperUnityBuild.BuildTool
 {
-    [CreateAssetMenu(fileName = Constants.DefaultSettingsFileName, menuName = "SuperUnityBuild Settings", order = 1)]
+    [CreateAssetMenu(fileName = Constants.DefaultSettingsFileName, menuName = "Stellar Unity Build Settings", order = 1)]
     [Serializable]
     public class BuildSettings : BaseSettings
     {

@@ -24,7 +24,7 @@ namespace SuperUnityBuild.BuildTool
             if (instance == null)
             {
                 //Create the default settings file 
-                Debug.Log($"SuperUnityBuild: Creating settings file: {defaultAssetPath}");
+                Debug.Log($"StellarUnityBuild: Creating settings file: {defaultAssetPath}");
                 instance = CreateInstance<T>();
                 instance.name = assetName;
 
