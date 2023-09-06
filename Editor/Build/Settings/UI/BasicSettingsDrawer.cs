@@ -66,6 +66,8 @@ namespace SuperUnityBuild.BuildTool
 
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("constantsFileLocation"));
 
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("useConstKeyword"));
+
                 property.serializedObject.ApplyModifiedProperties();
 
                 EditorGUILayout.EndVertical();

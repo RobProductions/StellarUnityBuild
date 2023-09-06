@@ -43,7 +43,8 @@ namespace SuperUnityBuild.BuildTool
             BuildPlatform currentBuildPlatform = null,
             BuildScriptingBackend currentScriptingBackend = null,
             BuildArchitecture currentBuildArchitecture = null,
-            BuildDistribution currentBuildDistribution = null)
+            BuildDistribution currentBuildDistribution = null,
+            bool useConstKeyword = true)
         {
             // Find the BuildConstants file.
             string currentFilePath = FindFile();
@@ -64,6 +65,8 @@ namespace SuperUnityBuild.BuildTool
             string backendString = currentScriptingBackend == null ? NONE : SanitizeString(currentScriptingBackend.name);
             string archString = currentBuildArchitecture == null ? NONE : SanitizeString(currentBuildArchitecture.name);
             string distributionString = currentBuildDistribution == null ? NONE : SanitizeString(currentBuildDistribution.distributionName);
+
+            string constOrReadonlyKeyword = useConstKeyword ? "const" : "static readonly";
 
             if (File.Exists(finalFileLocation))
             {
@@ -90,6 +93,8 @@ namespace SuperUnityBuild.BuildTool
                 writer.WriteLine("");
                 writer.WriteLine("// This file is auto-generated. Do not modify or move this file.");
                 writer.WriteLine();
+                writer.WriteLine("namespace SuperUnityBuild.Generated");
+                writer.WriteLine("    {");
                 writer.WriteLine("public static class BuildConstants");
                 writer.WriteLine("{");
 
@@ -227,15 +232,16 @@ namespace SuperUnityBuild.BuildTool
 
                 // Write current values.
                 writer.WriteLine("    public static readonly DateTime buildDate = new DateTime({0});", buildTime.Ticks);
-                writer.WriteLine("    public const string version = \"{0}\";", versionString);
-                writer.WriteLine("    public const ReleaseType releaseType = ReleaseType.{0};", releaseTypeString);
-                writer.WriteLine("    public const Platform platform = Platform.{0};", platformString);
-                writer.WriteLine("    public const ScriptingBackend backend = ScriptingBackend.{0};", backendString);
-                writer.WriteLine("    public const Architecture architecture = Architecture.{0};", archString);
-                writer.WriteLine("    public const Distribution distribution = Distribution.{0};", distributionString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " string version = \"{0}\";", versionString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " ReleaseType releaseType = ReleaseType.{0};", releaseTypeString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " Platform platform = Platform.{0};", platformString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " ScriptingBackend backend = ScriptingBackend.{0};", backendString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " Architecture architecture = Architecture.{0};", archString);
+                writer.WriteLine("    public " + constOrReadonlyKeyword + " Distribution distribution = Distribution.{0};", distributionString);
 
                 // End of class.
                 writer.WriteLine("}");
+                writer.WriteLine("    }");
                 writer.WriteLine();
             }
 
