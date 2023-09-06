@@ -90,6 +90,8 @@ namespace SuperUnityBuild.BuildTool
                 writer.WriteLine("");
                 writer.WriteLine("// This file is auto-generated. Do not modify or move this file.");
                 writer.WriteLine();
+                writer.WriteLine("namespace SuperUnityBuild.Generated");
+                writer.WriteLine("    {");
                 writer.WriteLine("public static class BuildConstants");
                 writer.WriteLine("{");
 
@@ -236,6 +238,7 @@ namespace SuperUnityBuild.BuildTool
 
                 // End of class.
                 writer.WriteLine("}");
+                writer.WriteLine("    }");
                 writer.WriteLine();
             }
 
