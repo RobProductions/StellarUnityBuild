@@ -1,5 +1,7 @@
 # Stellar Unity Build
 
+[![openupm](https://img.shields.io/npm/v/com.robproductions.stellarunitybuild?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.robproductions.stellarunitybuild/) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/RobProductions/StellarUnityBuild?logo=github)
+
 *Stellar Unity Build* is a fork of the powerful automation tool [SuperUnityBuild](https://github.com/superunitybuild/buildtool), which aims to streamline the build process in Unity. This extension package provides new experimental features that offer more control over your build pipeline.
 
 ## Enhancements Over SuperUnityBuild
