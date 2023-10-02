@@ -16,11 +16,13 @@
 
 ## Goals
 
-While I don't wish to understate the work done by the original SuperUnityBuild authors, I have far too many ideas for improvements that would be too much for the original project if I bombarded them with Pull Requests. In an attempt to keep the stability and sanity intact for SuperUnityBuild, I've opted to push my ideas into this new extension package instead.
+While I don't wish to understate the work done by the original SuperUnityBuild authors, I have far too many ideas for improvements that would be too much for the original project if I bombarded them with Pull Requests. In an attempt to keep the stability and sanity intact for SuperUnityBuild, I've opted to push my ideas into this new extension package instead. 
 
 In *Stellar Unity Build*, you are free to make more wild suggestions and drastic changes that wouldn't risk upsetting the standard that many people know from the original project. I might be making frequent adjustments here, but I will also try to pull in fixes and updates from SuperUnityBuild when possible to stay current. 
 
-That said, full credit for the original idea and implementation goes to the SuperUnityBuild developers, which you can find [here](https://github.com/superunitybuild/buildtool/graphs/contributors).
+The secondary goal is to utilize this repo as a testing ground for improvements to SuperUnityBuild. Eventually, these changes will be cherry-picked and submitted as pull requests to the base project. When that happens, the "enhancements" list will shrink to show the feature parity, and SuperUnityBuild will grow stronger. If changes are requested for those PRs due to code styling/bugfixing, an attempt will be made to backport those changes into Stellar. Finally, it's possible that ideas implemented here are not accepted into the base project at all. In that case, they will remain as Stellar-only enhancements. 
+
+With all that said, full credit for the original idea and implementation goes to the SuperUnityBuild developers, which you can find [here](https://github.com/superunitybuild/buildtool/graphs/contributors).
 
 ## Compatibility
 
