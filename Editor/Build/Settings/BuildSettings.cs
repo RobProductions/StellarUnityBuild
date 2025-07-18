@@ -110,10 +110,8 @@ namespace SuperUnityBuild.BuildTool
                 //If the window exists
 
                 //Set this as the current BuildSettings to be used
-                BuildSettings.instance = this;
-
-                //Tell the window to use the new settings 
-                thisWindow.RefreshSelectedBuildSettings();
+                //which will be caught by window's Init and setup the "settings" variable
+                thisWindow.currentBuildSettings = this;
             }
 
         }
