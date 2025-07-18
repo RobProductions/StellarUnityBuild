@@ -20,7 +20,9 @@ namespace SuperUnityBuild.BuildTool
             string assetPath = File.Exists(prefsAssetPath) ? prefsAssetPath : defaultAssetPath;
 
             T instance = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            return instance;
 
+            /*
             if (instance == null)
             {
                 //Create the default settings file 
@@ -34,6 +36,7 @@ namespace SuperUnityBuild.BuildTool
             }
 
             return instance;
+            */
         }
 
     }

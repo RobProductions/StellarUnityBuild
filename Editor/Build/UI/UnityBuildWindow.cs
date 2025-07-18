@@ -67,22 +67,31 @@ namespace SuperUnityBuild.BuildTool
 
             Init();
 
+
             GUILayout.Space(15);
 
-            settings.Update();
+            if (settings != null)
+            {
+                settings.Update();
+            }
+
             go.Update();
 
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, false, false, GUILayout.ExpandHeight(false));
+            if (settings != null)
+            {
 
-            DrawProperties();
+                scrollPos = EditorGUILayout.BeginScrollView(scrollPos, false, false, GUILayout.ExpandHeight(false));
 
-            EditorGUILayout.EndScrollView();
+                DrawProperties();
 
-            GUILayout.Space(15);
+                EditorGUILayout.EndScrollView();
 
-            DrawBuildButtons();
+                GUILayout.Space(15);
 
-            GUILayout.Space(10);
+                DrawBuildButtons();
+
+                GUILayout.Space(10);
+            }
 
             EditorGUILayout.EndVertical();
         }
@@ -117,18 +126,23 @@ namespace SuperUnityBuild.BuildTool
             // Override a 'None' selection for the BuildSettings asset
             if (currentBuildSettings == null)
             {
-                RefreshSelectedBuildSettings();
+                settings = null;
             }
 
             if (currentBuildSettings != BuildSettings.instance)
             {
                 BuildSettings.instance = currentBuildSettings;
                 settings = null;
+                if(BuildSettings.instance != null)
+                {
+                    settings = new SerializedObject(BuildSettings.instance);
+                }
             }
 
             if (settings == null)
             {
-                settings = new SerializedObject(BuildSettings.instance);
+                return;
+                //settings = new SerializedObject(BuildSettings.instance);
             }
 
             BuildSettings.Init();

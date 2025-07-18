@@ -12,13 +12,15 @@
 - **Sync Release Scene List:** You can now sync the list of scenes to be included in a release with your EditorBuildScene list (File->Build Settings) so that your releases can be updated automatically when your build settings change.
 - **SuperUnityBuild.Generated namespace:** BuildConstants.cs is now encapsulated in a namespace to safeguard against user code that may utilize the same naming convention.
 - **Readonly field option for Build Constants:** Using the const keyword for BuildConstants is great for making sure the values are known at compile time, but it also introduces warnings about unreachable code if you were to actually utilize those fields in an if statement. There's now an option to disable const keyword and replace it with "static readonly" within the basic settings, and that will eliminate these warnings since the changing parameters are no longer compile-time constants.
-- **Fix for Linear Color Space:** Fixes the [incompatible color space issue](https://github.com/superunitybuild/buildtool/issues/100) with a contribution by Github user [MatthieuG9](https://github.com/MatthieuG9).
+- **Removed default folder generation:** Even if you had a custom build settings asset, refreshing your Editor Layout would cause the BuildWindow to think that there is no asset associated with it, which would invoke default "SuperUnityBuild" folder creation. This default folder has now been removed completely so you can place your build settings asset wherever you'd like without worrying about that folder coming back from the graveyard.
+- **Reordering Release Types List:** You can now reorder the release types just like the scene list using the up and down navigators.
 
 ## Added to SuperUnityBuild
 
 *This list covers features that were previously exclusive to Stellar Unity Build but have since been merged or reimplemented in the parent repo.*
 
 - **Customize constant file location:** You can now set the desired location of your BuildConstants.cs file within your project.
+- **Fix for Linear Color Space:** Fixes the [incompatible color space issue](https://github.com/superunitybuild/buildtool/issues/100) with a contribution by Github user [MatthieuG9](https://github.com/MatthieuG9).
 
 ## Goals
 

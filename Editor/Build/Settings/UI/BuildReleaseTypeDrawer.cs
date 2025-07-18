@@ -23,20 +23,45 @@ namespace SuperUnityBuild.BuildTool
             UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, UnityBuildGUIUtility.HeaderColorType.AltColor);
             property.isExpanded = show;
 
-            if (UnityBuildGUIUtility.DeleteButton())
+            BuildReleaseType[] types = BuildSettings.releaseTypeList.releaseTypes;
+            for (int i = 0; i < types.Length; i++)
             {
-                BuildReleaseType[] types = BuildSettings.releaseTypeList.releaseTypes;
-                for (int i = 0; i < types.Length; i++)
+                if (types[i].typeName == property.FindPropertyRelative("typeName").stringValue)
                 {
-                    if (types[i].typeName == property.FindPropertyRelative("typeName").stringValue)
+                    if(UnityBuildGUIUtility.MoveUpButton())
+                    {
+                        if(i - 1 >= 0)
+                        {
+                            var thisType = BuildSettings.releaseTypeList.releaseTypes[i];
+                            ArrayUtility.RemoveAt(ref BuildSettings.releaseTypeList.releaseTypes, i);
+                            ArrayUtility.Insert(ref BuildSettings.releaseTypeList.releaseTypes, i - 1, thisType);
+                            i = i - 1;
+                        }
+                    }
+                    if (UnityBuildGUIUtility.MoveDownButton())
+                    {
+                        if (i + 1 < BuildSettings.releaseTypeList.releaseTypes.Length)
+                        {
+                            var thisType = BuildSettings.releaseTypeList.releaseTypes[i];
+                            ArrayUtility.RemoveAt(ref BuildSettings.releaseTypeList.releaseTypes, i);
+                            ArrayUtility.Insert(ref BuildSettings.releaseTypeList.releaseTypes, i + 1, thisType);
+                            i = i + 1;
+                        }
+                    }
+
+                    if (UnityBuildGUIUtility.DeleteButton())
                     {
                         ArrayUtility.RemoveAt<BuildReleaseType>(ref BuildSettings.releaseTypeList.releaseTypes, i);
                         GUIUtility.keyboardControl = 0;
+
+                        show = false;
+
                         break;
                     }
+
                 }
-                show = false;
             }
+
 
             EditorGUILayout.EndHorizontal();
 
