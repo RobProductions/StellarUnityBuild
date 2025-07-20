@@ -22,8 +22,9 @@ namespace SuperUnityBuild.BuildTool
             bool show = property.isExpanded;
             UnityBuildGUIUtility.DropdownHeader(property.FindPropertyRelative("typeName").stringValue, ref show, UnityBuildGUIUtility.HeaderColorType.AltColor);
             property.isExpanded = show;
-
+            
             BuildReleaseType[] types = BuildSettings.releaseTypeList.releaseTypes;
+
             for (int i = 0; i < types.Length; i++)
             {
                 if (types[i].typeName == property.FindPropertyRelative("typeName").stringValue)

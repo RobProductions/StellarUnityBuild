@@ -129,7 +129,7 @@ namespace SuperUnityBuild.BuildTool
                 settings = null;
             }
 
-            if (currentBuildSettings != BuildSettings.instance)
+            if (currentBuildSettings != BuildSettings.instance || settings == null)
             {
                 BuildSettings.instance = currentBuildSettings;
                 settings = null;
